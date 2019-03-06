@@ -1,0 +1,32 @@
+syntax = "proto3";
+package test;
+
+service RBAC {
+    rpc ModAct (Rep) returns (ModActRes) {}
+    rpc Enforce (EnforceRep) returns (EnforceRes) {}
+}
+message Rep  {
+
+}
+message EnforceRep  {
+    repeated string sub = 1;
+    string obj = 2;
+    string act = 3;
+}
+
+message RBACInfo  {
+    string sub = 1;
+    string obj = 2;
+    string act = 3;
+}
+
+message EnforceRes {
+    int64 code = 1;
+    string msg = 2;
+}
+
+message ModActRes {
+    int64 code = 1;
+    string msg = 2;
+    repeated RBACInfo data_info = 3;
+}
