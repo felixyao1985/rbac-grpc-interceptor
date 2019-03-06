@@ -22,41 +22,49 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Rep struct {
+type RoleRep struct {
+	Role                 []string `protobuf:"bytes,1,rep,name=role,proto3" json:"role,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Rep) Reset()         { *m = Rep{} }
-func (m *Rep) String() string { return proto.CompactTextString(m) }
-func (*Rep) ProtoMessage()    {}
-func (*Rep) Descriptor() ([]byte, []int) {
+func (m *RoleRep) Reset()         { *m = RoleRep{} }
+func (m *RoleRep) String() string { return proto.CompactTextString(m) }
+func (*RoleRep) ProtoMessage()    {}
+func (*RoleRep) Descriptor() ([]byte, []int) {
 	return fileDescriptor_54744e7db0d1daef, []int{0}
 }
 
-func (m *Rep) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Rep.Unmarshal(m, b)
+func (m *RoleRep) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RoleRep.Unmarshal(m, b)
 }
-func (m *Rep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Rep.Marshal(b, m, deterministic)
+func (m *RoleRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RoleRep.Marshal(b, m, deterministic)
 }
-func (m *Rep) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Rep.Merge(m, src)
+func (m *RoleRep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RoleRep.Merge(m, src)
 }
-func (m *Rep) XXX_Size() int {
-	return xxx_messageInfo_Rep.Size(m)
+func (m *RoleRep) XXX_Size() int {
+	return xxx_messageInfo_RoleRep.Size(m)
 }
-func (m *Rep) XXX_DiscardUnknown() {
-	xxx_messageInfo_Rep.DiscardUnknown(m)
+func (m *RoleRep) XXX_DiscardUnknown() {
+	xxx_messageInfo_RoleRep.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Rep proto.InternalMessageInfo
+var xxx_messageInfo_RoleRep proto.InternalMessageInfo
+
+func (m *RoleRep) GetRole() []string {
+	if m != nil {
+		return m.Role
+	}
+	return nil
+}
 
 type EnforceRep struct {
-	Sub                  []string `protobuf:"bytes,1,rep,name=sub,proto3" json:"sub,omitempty"`
-	Obj                  string   `protobuf:"bytes,2,opt,name=obj,proto3" json:"obj,omitempty"`
-	Act                  string   `protobuf:"bytes,3,opt,name=act,proto3" json:"act,omitempty"`
+	Role                 []string `protobuf:"bytes,1,rep,name=role,proto3" json:"role,omitempty"`
+	Method               string   `protobuf:"bytes,2,opt,name=method,proto3" json:"method,omitempty"`
+	Pattern              string   `protobuf:"bytes,3,opt,name=pattern,proto3" json:"pattern,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -87,31 +95,32 @@ func (m *EnforceRep) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_EnforceRep proto.InternalMessageInfo
 
-func (m *EnforceRep) GetSub() []string {
+func (m *EnforceRep) GetRole() []string {
 	if m != nil {
-		return m.Sub
+		return m.Role
 	}
 	return nil
 }
 
-func (m *EnforceRep) GetObj() string {
+func (m *EnforceRep) GetMethod() string {
 	if m != nil {
-		return m.Obj
+		return m.Method
 	}
 	return ""
 }
 
-func (m *EnforceRep) GetAct() string {
+func (m *EnforceRep) GetPattern() string {
 	if m != nil {
-		return m.Act
+		return m.Pattern
 	}
 	return ""
 }
 
 type RBACInfo struct {
-	Sub                  string   `protobuf:"bytes,1,opt,name=sub,proto3" json:"sub,omitempty"`
-	Obj                  string   `protobuf:"bytes,2,opt,name=obj,proto3" json:"obj,omitempty"`
-	Act                  string   `protobuf:"bytes,3,opt,name=act,proto3" json:"act,omitempty"`
+	Role                 string   `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
+	Method               string   `protobuf:"bytes,2,opt,name=method,proto3" json:"method,omitempty"`
+	Pattern              string   `protobuf:"bytes,3,opt,name=pattern,proto3" json:"pattern,omitempty"`
+	Module               string   `protobuf:"bytes,4,opt,name=module,proto3" json:"module,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -142,23 +151,30 @@ func (m *RBACInfo) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RBACInfo proto.InternalMessageInfo
 
-func (m *RBACInfo) GetSub() string {
+func (m *RBACInfo) GetRole() string {
 	if m != nil {
-		return m.Sub
+		return m.Role
 	}
 	return ""
 }
 
-func (m *RBACInfo) GetObj() string {
+func (m *RBACInfo) GetMethod() string {
 	if m != nil {
-		return m.Obj
+		return m.Method
 	}
 	return ""
 }
 
-func (m *RBACInfo) GetAct() string {
+func (m *RBACInfo) GetPattern() string {
 	if m != nil {
-		return m.Act
+		return m.Pattern
+	}
+	return ""
+}
+
+func (m *RBACInfo) GetModule() string {
+	if m != nil {
+		return m.Module
 	}
 	return ""
 }
@@ -210,7 +226,7 @@ func (m *EnforceRes) GetMsg() string {
 	return ""
 }
 
-type ModActRes struct {
+type ModuleRes struct {
 	Code                 int64       `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
 	Msg                  string      `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	DataInfo             []*RBACInfo `protobuf:"bytes,3,rep,name=data_info,json=dataInfo,proto3" json:"data_info,omitempty"`
@@ -219,46 +235,46 @@ type ModActRes struct {
 	XXX_sizecache        int32       `json:"-"`
 }
 
-func (m *ModActRes) Reset()         { *m = ModActRes{} }
-func (m *ModActRes) String() string { return proto.CompactTextString(m) }
-func (*ModActRes) ProtoMessage()    {}
-func (*ModActRes) Descriptor() ([]byte, []int) {
+func (m *ModuleRes) Reset()         { *m = ModuleRes{} }
+func (m *ModuleRes) String() string { return proto.CompactTextString(m) }
+func (*ModuleRes) ProtoMessage()    {}
+func (*ModuleRes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_54744e7db0d1daef, []int{4}
 }
 
-func (m *ModActRes) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ModActRes.Unmarshal(m, b)
+func (m *ModuleRes) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ModuleRes.Unmarshal(m, b)
 }
-func (m *ModActRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ModActRes.Marshal(b, m, deterministic)
+func (m *ModuleRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ModuleRes.Marshal(b, m, deterministic)
 }
-func (m *ModActRes) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ModActRes.Merge(m, src)
+func (m *ModuleRes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ModuleRes.Merge(m, src)
 }
-func (m *ModActRes) XXX_Size() int {
-	return xxx_messageInfo_ModActRes.Size(m)
+func (m *ModuleRes) XXX_Size() int {
+	return xxx_messageInfo_ModuleRes.Size(m)
 }
-func (m *ModActRes) XXX_DiscardUnknown() {
-	xxx_messageInfo_ModActRes.DiscardUnknown(m)
+func (m *ModuleRes) XXX_DiscardUnknown() {
+	xxx_messageInfo_ModuleRes.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ModActRes proto.InternalMessageInfo
+var xxx_messageInfo_ModuleRes proto.InternalMessageInfo
 
-func (m *ModActRes) GetCode() int64 {
+func (m *ModuleRes) GetCode() int64 {
 	if m != nil {
 		return m.Code
 	}
 	return 0
 }
 
-func (m *ModActRes) GetMsg() string {
+func (m *ModuleRes) GetMsg() string {
 	if m != nil {
 		return m.Msg
 	}
 	return ""
 }
 
-func (m *ModActRes) GetDataInfo() []*RBACInfo {
+func (m *ModuleRes) GetDataInfo() []*RBACInfo {
 	if m != nil {
 		return m.DataInfo
 	}
@@ -266,33 +282,34 @@ func (m *ModActRes) GetDataInfo() []*RBACInfo {
 }
 
 func init() {
-	proto.RegisterType((*Rep)(nil), "test.Rep")
+	proto.RegisterType((*RoleRep)(nil), "test.RoleRep")
 	proto.RegisterType((*EnforceRep)(nil), "test.EnforceRep")
 	proto.RegisterType((*RBACInfo)(nil), "test.RBACInfo")
 	proto.RegisterType((*EnforceRes)(nil), "test.EnforceRes")
-	proto.RegisterType((*ModActRes)(nil), "test.ModActRes")
+	proto.RegisterType((*ModuleRes)(nil), "test.ModuleRes")
 }
 
 func init() { proto.RegisterFile("role_rbac.proto", fileDescriptor_54744e7db0d1daef) }
 
 var fileDescriptor_54744e7db0d1daef = []byte{
-	// 245 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x91, 0x31, 0x4f, 0xc3, 0x30,
-	0x10, 0x85, 0x1b, 0x1c, 0x4a, 0x73, 0x48, 0xb4, 0xba, 0x29, 0xea, 0x14, 0x79, 0x40, 0x95, 0x90,
-	0x82, 0x14, 0xfe, 0x00, 0x2d, 0x62, 0x60, 0x60, 0xf1, 0x0f, 0x20, 0xb2, 0x1d, 0xa7, 0xa2, 0xa2,
-	0xb9, 0x28, 0x36, 0xff, 0x1f, 0x5d, 0xdc, 0x12, 0xc4, 0x04, 0xdb, 0xd3, 0xe7, 0xbb, 0xe7, 0xe7,
-	0x67, 0x58, 0x0e, 0xf4, 0xe1, 0xea, 0xc1, 0x68, 0x5b, 0xf6, 0x03, 0x05, 0xc2, 0x34, 0x38, 0x1f,
-	0xe4, 0x25, 0x08, 0xe5, 0x7a, 0xb9, 0x03, 0x78, 0xee, 0x5a, 0x1a, 0xac, 0x53, 0xae, 0xc7, 0x15,
-	0x08, 0xff, 0x69, 0xf2, 0xa4, 0x10, 0x9b, 0x4c, 0xb1, 0x64, 0x42, 0xe6, 0x90, 0x5f, 0x14, 0x09,
-	0x13, 0x32, 0x07, 0x26, 0xda, 0x86, 0x5c, 0x44, 0xa2, 0x6d, 0x90, 0x8f, 0xb0, 0x50, 0xbb, 0xed,
-	0xd3, 0x4b, 0xd7, 0xd2, 0xe4, 0x90, 0xfc, 0xc7, 0xa1, 0xfa, 0x91, 0xc2, 0x23, 0x42, 0x6a, 0xa9,
-	0x71, 0xa3, 0x89, 0x50, 0xa3, 0xe6, 0x9d, 0xa3, 0xdf, 0x9f, 0x5d, 0x8e, 0x7e, 0x2f, 0xdf, 0x20,
-	0x7b, 0xa5, 0x66, 0x6b, 0xc3, 0x9f, 0x57, 0xf0, 0x0e, 0xb2, 0x46, 0x07, 0x5d, 0xbf, 0x77, 0x2d,
-	0xe5, 0xa2, 0x10, 0x9b, 0xeb, 0xea, 0xa6, 0xe4, 0x36, 0xca, 0x73, 0x7e, 0xb5, 0xe0, 0x01, 0x56,
-	0x55, 0x0d, 0x29, 0x53, 0xbc, 0x85, 0x79, 0xbc, 0x07, 0xb3, 0xd3, 0xac, 0xeb, 0xd7, 0xcb, 0x28,
-	0xbf, 0x03, 0xc8, 0x19, 0xde, 0xc3, 0xd5, 0xe9, 0x0d, 0xb8, 0x8a, 0xa7, 0x53, 0xb1, 0xeb, 0xdf,
-	0xc4, 0xcb, 0x99, 0x99, 0x8f, 0xdf, 0xf1, 0xf0, 0x15, 0x00, 0x00, 0xff, 0xff, 0x10, 0x61, 0x11,
-	0xd9, 0xa1, 0x01, 0x00, 0x00,
+	// 263 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x51, 0x4d, 0x4b, 0xc3, 0x40,
+	0x10, 0x6d, 0xdc, 0xd0, 0x34, 0x23, 0xda, 0x32, 0x07, 0x59, 0x0a, 0x42, 0xd8, 0x53, 0xa0, 0x10,
+	0x21, 0xfe, 0x02, 0x15, 0x0f, 0x1e, 0xbc, 0xec, 0x0f, 0xb0, 0xa4, 0xc9, 0xc6, 0x0a, 0x69, 0x26,
+	0xec, 0xae, 0xff, 0x5f, 0xf6, 0xa3, 0x5a, 0x04, 0x41, 0x7a, 0x7b, 0x6f, 0xe7, 0xbd, 0x79, 0x33,
+	0x3b, 0xb0, 0xd4, 0x34, 0xa8, 0xad, 0xde, 0x35, 0x6d, 0x35, 0x69, 0xb2, 0x84, 0xa9, 0x55, 0xc6,
+	0x8a, 0x5b, 0xc8, 0x24, 0x0d, 0x4a, 0xaa, 0x09, 0x11, 0x52, 0xa7, 0xe1, 0x49, 0xc1, 0xca, 0x5c,
+	0x7a, 0x2c, 0x24, 0xc0, 0xf3, 0xd8, 0x93, 0x6e, 0xff, 0x52, 0xe0, 0x0d, 0xcc, 0x0f, 0xca, 0xee,
+	0xa9, 0xe3, 0x17, 0x45, 0x52, 0xe6, 0x32, 0x32, 0xe4, 0x90, 0x4d, 0x8d, 0xb5, 0x4a, 0x8f, 0x9c,
+	0xf9, 0xc2, 0x91, 0x8a, 0x3d, 0x2c, 0xe4, 0xe3, 0xc3, 0xd3, 0xcb, 0xd8, 0xd3, 0x49, 0xc7, 0xe4,
+	0xfc, 0x8e, 0xde, 0x41, 0xdd, 0xe7, 0xa0, 0x78, 0x1a, 0x1d, 0x9e, 0x89, 0xfa, 0x64, 0x7a, 0xe3,
+	0xb2, 0x5a, 0xea, 0x42, 0x16, 0x93, 0x1e, 0xe3, 0x0a, 0xd8, 0xc1, 0xbc, 0xc7, 0x20, 0x07, 0xc5,
+	0x1b, 0xe4, 0xaf, 0xde, 0xfd, 0x6f, 0x0b, 0x6e, 0x20, 0xef, 0x1a, 0xdb, 0x6c, 0x3f, 0xc6, 0x9e,
+	0x38, 0x2b, 0x58, 0x79, 0x59, 0x5f, 0x57, 0xee, 0x77, 0xab, 0xe3, 0x9e, 0x72, 0xe1, 0x04, 0x0e,
+	0xd5, 0x1d, 0xa4, 0xee, 0x15, 0x37, 0x90, 0x85, 0x1c, 0x83, 0x57, 0x51, 0x1c, 0xee, 0xb0, 0x5e,
+	0x06, 0xfa, 0x3d, 0x85, 0x98, 0xe1, 0x1d, 0x64, 0x71, 0x11, 0x5c, 0x85, 0xea, 0xcf, 0x55, 0xd6,
+	0xbf, 0x5f, 0x8c, 0x98, 0xed, 0xe6, 0xfe, 0xc6, 0xf7, 0x5f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x8b,
+	0xef, 0x1a, 0x41, 0xf6, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -307,7 +324,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type RBACClient interface {
-	ModAct(ctx context.Context, in *Rep, opts ...grpc.CallOption) (*ModActRes, error)
+	Modules(ctx context.Context, in *RoleRep, opts ...grpc.CallOption) (*ModuleRes, error)
 	Enforce(ctx context.Context, in *EnforceRep, opts ...grpc.CallOption) (*EnforceRes, error)
 }
 
@@ -319,9 +336,9 @@ func NewRBACClient(cc *grpc.ClientConn) RBACClient {
 	return &rBACClient{cc}
 }
 
-func (c *rBACClient) ModAct(ctx context.Context, in *Rep, opts ...grpc.CallOption) (*ModActRes, error) {
-	out := new(ModActRes)
-	err := c.cc.Invoke(ctx, "/test.RBAC/ModAct", in, out, opts...)
+func (c *rBACClient) Modules(ctx context.Context, in *RoleRep, opts ...grpc.CallOption) (*ModuleRes, error) {
+	out := new(ModuleRes)
+	err := c.cc.Invoke(ctx, "/test.RBAC/Modules", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -339,7 +356,7 @@ func (c *rBACClient) Enforce(ctx context.Context, in *EnforceRep, opts ...grpc.C
 
 // RBACServer is the server API for RBAC service.
 type RBACServer interface {
-	ModAct(context.Context, *Rep) (*ModActRes, error)
+	Modules(context.Context, *RoleRep) (*ModuleRes, error)
 	Enforce(context.Context, *EnforceRep) (*EnforceRes, error)
 }
 
@@ -347,20 +364,20 @@ func RegisterRBACServer(s *grpc.Server, srv RBACServer) {
 	s.RegisterService(&_RBAC_serviceDesc, srv)
 }
 
-func _RBAC_ModAct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Rep)
+func _RBAC_Modules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RoleRep)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RBACServer).ModAct(ctx, in)
+		return srv.(RBACServer).Modules(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/test.RBAC/ModAct",
+		FullMethod: "/test.RBAC/Modules",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RBACServer).ModAct(ctx, req.(*Rep))
+		return srv.(RBACServer).Modules(ctx, req.(*RoleRep))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -388,8 +405,8 @@ var _RBAC_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*RBACServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ModAct",
-			Handler:    _RBAC_ModAct_Handler,
+			MethodName: "Modules",
+			Handler:    _RBAC_Modules_Handler,
 		},
 		{
 			MethodName: "Enforce",

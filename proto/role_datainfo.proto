@@ -2,9 +2,9 @@ syntax = "proto3";
 package test;
 
 service Menu {
-    rpc Save (MenuModel) returns (Res) {}
-    rpc List (RepMenuList) returns (Res) {}
-    rpc View (RepMenuView) returns (Res) {}
+    rpc Save (MenuModel) returns (MenuRes) {}
+    rpc List (RepMenuList) returns (MenuRes) {}
+    rpc View (RepMenuView) returns (MenuRes) {}
 }
 
 message RepMenuList  {
@@ -20,9 +20,10 @@ message MenuModel  {
     string CODE = 3;
     string URL = 4;
     string TYPE = 5;
+    string module = 6;
 }
 
-message Res {
+message MenuRes {
     int32 code = 1;
     string msg = 2;
     repeated MenuModel data_info = 3;

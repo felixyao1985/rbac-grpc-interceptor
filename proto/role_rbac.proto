@@ -2,22 +2,23 @@ syntax = "proto3";
 package test;
 
 service RBAC {
-    rpc ModAct (Rep) returns (ModActRes) {}
+    rpc Modules (RoleRep) returns (ModuleRes) {}
     rpc Enforce (EnforceRep) returns (EnforceRes) {}
 }
-message Rep  {
-
+message RoleRep  {
+    repeated string role = 1;
 }
 message EnforceRep  {
-    repeated string sub = 1;
-    string obj = 2;
-    string act = 3;
+    repeated string role = 1;
+    string method = 2;
+    string pattern = 3;
 }
 
 message RBACInfo  {
-    string sub = 1;
-    string obj = 2;
-    string act = 3;
+    string role = 1;
+    string method = 2;
+    string pattern = 3;
+    string module = 4;
 }
 
 message EnforceRes {
@@ -25,7 +26,7 @@ message EnforceRes {
     string msg = 2;
 }
 
-message ModActRes {
+message ModuleRes {
     int64 code = 1;
     string msg = 2;
     repeated RBACInfo data_info = 3;
