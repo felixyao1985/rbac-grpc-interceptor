@@ -1,4 +1,4 @@
-package interceptor
+package rbac
 
 import (
 	"strings"
@@ -95,4 +95,8 @@ func (e *authentication) Enforce(Sub string, Obj string, Act string) bool {
 	}
 
 	return false
+}
+
+func (e *authentication) Middleware(target string) {
+
 }

@@ -22,6 +22,155 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type Permit struct {
+	Role                 string   `protobuf:"bytes,1,opt,name=Role,proto3" json:"Role,omitempty"`
+	Method               string   `protobuf:"bytes,2,opt,name=Method,proto3" json:"Method,omitempty"`
+	Pattern              string   `protobuf:"bytes,3,opt,name=Pattern,proto3" json:"Pattern,omitempty"`
+	Module               string   `protobuf:"bytes,4,opt,name=Module,proto3" json:"Module,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Permit) Reset()         { *m = Permit{} }
+func (m *Permit) String() string { return proto.CompactTextString(m) }
+func (*Permit) ProtoMessage()    {}
+func (*Permit) Descriptor() ([]byte, []int) {
+	return fileDescriptor_54744e7db0d1daef, []int{0}
+}
+
+func (m *Permit) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Permit.Unmarshal(m, b)
+}
+func (m *Permit) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Permit.Marshal(b, m, deterministic)
+}
+func (m *Permit) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Permit.Merge(m, src)
+}
+func (m *Permit) XXX_Size() int {
+	return xxx_messageInfo_Permit.Size(m)
+}
+func (m *Permit) XXX_DiscardUnknown() {
+	xxx_messageInfo_Permit.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Permit proto.InternalMessageInfo
+
+func (m *Permit) GetRole() string {
+	if m != nil {
+		return m.Role
+	}
+	return ""
+}
+
+func (m *Permit) GetMethod() string {
+	if m != nil {
+		return m.Method
+	}
+	return ""
+}
+
+func (m *Permit) GetPattern() string {
+	if m != nil {
+		return m.Pattern
+	}
+	return ""
+}
+
+func (m *Permit) GetModule() string {
+	if m != nil {
+		return m.Module
+	}
+	return ""
+}
+
+type PermitRep struct {
+	Permits              []*Permit `protobuf:"bytes,1,rep,name=Permits,proto3" json:"Permits,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
+}
+
+func (m *PermitRep) Reset()         { *m = PermitRep{} }
+func (m *PermitRep) String() string { return proto.CompactTextString(m) }
+func (*PermitRep) ProtoMessage()    {}
+func (*PermitRep) Descriptor() ([]byte, []int) {
+	return fileDescriptor_54744e7db0d1daef, []int{1}
+}
+
+func (m *PermitRep) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PermitRep.Unmarshal(m, b)
+}
+func (m *PermitRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PermitRep.Marshal(b, m, deterministic)
+}
+func (m *PermitRep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PermitRep.Merge(m, src)
+}
+func (m *PermitRep) XXX_Size() int {
+	return xxx_messageInfo_PermitRep.Size(m)
+}
+func (m *PermitRep) XXX_DiscardUnknown() {
+	xxx_messageInfo_PermitRep.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PermitRep proto.InternalMessageInfo
+
+func (m *PermitRep) GetPermits() []*Permit {
+	if m != nil {
+		return m.Permits
+	}
+	return nil
+}
+
+type PermitRes struct {
+	Code                 int64    `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
+	Msg                  string   `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *PermitRes) Reset()         { *m = PermitRes{} }
+func (m *PermitRes) String() string { return proto.CompactTextString(m) }
+func (*PermitRes) ProtoMessage()    {}
+func (*PermitRes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_54744e7db0d1daef, []int{2}
+}
+
+func (m *PermitRes) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PermitRes.Unmarshal(m, b)
+}
+func (m *PermitRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PermitRes.Marshal(b, m, deterministic)
+}
+func (m *PermitRes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PermitRes.Merge(m, src)
+}
+func (m *PermitRes) XXX_Size() int {
+	return xxx_messageInfo_PermitRes.Size(m)
+}
+func (m *PermitRes) XXX_DiscardUnknown() {
+	xxx_messageInfo_PermitRes.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PermitRes proto.InternalMessageInfo
+
+func (m *PermitRes) GetCode() int64 {
+	if m != nil {
+		return m.Code
+	}
+	return 0
+}
+
+func (m *PermitRes) GetMsg() string {
+	if m != nil {
+		return m.Msg
+	}
+	return ""
+}
+
 type RoleRep struct {
 	Role                 []string `protobuf:"bytes,1,rep,name=role,proto3" json:"role,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -33,7 +182,7 @@ func (m *RoleRep) Reset()         { *m = RoleRep{} }
 func (m *RoleRep) String() string { return proto.CompactTextString(m) }
 func (*RoleRep) ProtoMessage()    {}
 func (*RoleRep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_54744e7db0d1daef, []int{0}
+	return fileDescriptor_54744e7db0d1daef, []int{3}
 }
 
 func (m *RoleRep) XXX_Unmarshal(b []byte) error {
@@ -74,7 +223,7 @@ func (m *EnforceRep) Reset()         { *m = EnforceRep{} }
 func (m *EnforceRep) String() string { return proto.CompactTextString(m) }
 func (*EnforceRep) ProtoMessage()    {}
 func (*EnforceRep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_54744e7db0d1daef, []int{1}
+	return fileDescriptor_54744e7db0d1daef, []int{4}
 }
 
 func (m *EnforceRep) XXX_Unmarshal(b []byte) error {
@@ -130,7 +279,7 @@ func (m *RBACInfo) Reset()         { *m = RBACInfo{} }
 func (m *RBACInfo) String() string { return proto.CompactTextString(m) }
 func (*RBACInfo) ProtoMessage()    {}
 func (*RBACInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_54744e7db0d1daef, []int{2}
+	return fileDescriptor_54744e7db0d1daef, []int{5}
 }
 
 func (m *RBACInfo) XXX_Unmarshal(b []byte) error {
@@ -191,7 +340,7 @@ func (m *EnforceRes) Reset()         { *m = EnforceRes{} }
 func (m *EnforceRes) String() string { return proto.CompactTextString(m) }
 func (*EnforceRes) ProtoMessage()    {}
 func (*EnforceRes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_54744e7db0d1daef, []int{3}
+	return fileDescriptor_54744e7db0d1daef, []int{6}
 }
 
 func (m *EnforceRes) XXX_Unmarshal(b []byte) error {
@@ -226,20 +375,59 @@ func (m *EnforceRes) GetMsg() string {
 	return ""
 }
 
+type ModuleInfo struct {
+	Module               string   `protobuf:"bytes,1,opt,name=module,proto3" json:"module,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ModuleInfo) Reset()         { *m = ModuleInfo{} }
+func (m *ModuleInfo) String() string { return proto.CompactTextString(m) }
+func (*ModuleInfo) ProtoMessage()    {}
+func (*ModuleInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_54744e7db0d1daef, []int{7}
+}
+
+func (m *ModuleInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ModuleInfo.Unmarshal(m, b)
+}
+func (m *ModuleInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ModuleInfo.Marshal(b, m, deterministic)
+}
+func (m *ModuleInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ModuleInfo.Merge(m, src)
+}
+func (m *ModuleInfo) XXX_Size() int {
+	return xxx_messageInfo_ModuleInfo.Size(m)
+}
+func (m *ModuleInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_ModuleInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ModuleInfo proto.InternalMessageInfo
+
+func (m *ModuleInfo) GetModule() string {
+	if m != nil {
+		return m.Module
+	}
+	return ""
+}
+
 type ModuleRes struct {
-	Code                 int64       `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
-	Msg                  string      `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
-	DataInfo             []*RBACInfo `protobuf:"bytes,3,rep,name=data_info,json=dataInfo,proto3" json:"data_info,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
-	XXX_unrecognized     []byte      `json:"-"`
-	XXX_sizecache        int32       `json:"-"`
+	Code                 int64         `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
+	Msg                  string        `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	DataInfo             []*ModuleInfo `protobuf:"bytes,3,rep,name=data_info,json=dataInfo,proto3" json:"data_info,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
 func (m *ModuleRes) Reset()         { *m = ModuleRes{} }
 func (m *ModuleRes) String() string { return proto.CompactTextString(m) }
 func (*ModuleRes) ProtoMessage()    {}
 func (*ModuleRes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_54744e7db0d1daef, []int{4}
+	return fileDescriptor_54744e7db0d1daef, []int{8}
 }
 
 func (m *ModuleRes) XXX_Unmarshal(b []byte) error {
@@ -274,7 +462,7 @@ func (m *ModuleRes) GetMsg() string {
 	return ""
 }
 
-func (m *ModuleRes) GetDataInfo() []*RBACInfo {
+func (m *ModuleRes) GetDataInfo() []*ModuleInfo {
 	if m != nil {
 		return m.DataInfo
 	}
@@ -282,34 +470,43 @@ func (m *ModuleRes) GetDataInfo() []*RBACInfo {
 }
 
 func init() {
+	proto.RegisterType((*Permit)(nil), "test.Permit")
+	proto.RegisterType((*PermitRep)(nil), "test.PermitRep")
+	proto.RegisterType((*PermitRes)(nil), "test.PermitRes")
 	proto.RegisterType((*RoleRep)(nil), "test.RoleRep")
 	proto.RegisterType((*EnforceRep)(nil), "test.EnforceRep")
 	proto.RegisterType((*RBACInfo)(nil), "test.RBACInfo")
 	proto.RegisterType((*EnforceRes)(nil), "test.EnforceRes")
+	proto.RegisterType((*ModuleInfo)(nil), "test.ModuleInfo")
 	proto.RegisterType((*ModuleRes)(nil), "test.ModuleRes")
 }
 
 func init() { proto.RegisterFile("role_rbac.proto", fileDescriptor_54744e7db0d1daef) }
 
 var fileDescriptor_54744e7db0d1daef = []byte{
-	// 263 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x51, 0x4d, 0x4b, 0xc3, 0x40,
-	0x10, 0x6d, 0xdc, 0xd0, 0x34, 0x23, 0xda, 0x32, 0x07, 0x59, 0x0a, 0x42, 0xd8, 0x53, 0xa0, 0x10,
-	0x21, 0xfe, 0x02, 0x15, 0x0f, 0x1e, 0xbc, 0xec, 0x0f, 0xb0, 0xa4, 0xc9, 0xc6, 0x0a, 0x69, 0x26,
-	0xec, 0xae, 0xff, 0x5f, 0xf6, 0xa3, 0x5a, 0x04, 0x41, 0x7a, 0x7b, 0x6f, 0xe7, 0xbd, 0x79, 0x33,
-	0x3b, 0xb0, 0xd4, 0x34, 0xa8, 0xad, 0xde, 0x35, 0x6d, 0x35, 0x69, 0xb2, 0x84, 0xa9, 0x55, 0xc6,
-	0x8a, 0x5b, 0xc8, 0x24, 0x0d, 0x4a, 0xaa, 0x09, 0x11, 0x52, 0xa7, 0xe1, 0x49, 0xc1, 0xca, 0x5c,
-	0x7a, 0x2c, 0x24, 0xc0, 0xf3, 0xd8, 0x93, 0x6e, 0xff, 0x52, 0xe0, 0x0d, 0xcc, 0x0f, 0xca, 0xee,
-	0xa9, 0xe3, 0x17, 0x45, 0x52, 0xe6, 0x32, 0x32, 0xe4, 0x90, 0x4d, 0x8d, 0xb5, 0x4a, 0x8f, 0x9c,
-	0xf9, 0xc2, 0x91, 0x8a, 0x3d, 0x2c, 0xe4, 0xe3, 0xc3, 0xd3, 0xcb, 0xd8, 0xd3, 0x49, 0xc7, 0xe4,
-	0xfc, 0x8e, 0xde, 0x41, 0xdd, 0xe7, 0xa0, 0x78, 0x1a, 0x1d, 0x9e, 0x89, 0xfa, 0x64, 0x7a, 0xe3,
-	0xb2, 0x5a, 0xea, 0x42, 0x16, 0x93, 0x1e, 0xe3, 0x0a, 0xd8, 0xc1, 0xbc, 0xc7, 0x20, 0x07, 0xc5,
-	0x1b, 0xe4, 0xaf, 0xde, 0xfd, 0x6f, 0x0b, 0x6e, 0x20, 0xef, 0x1a, 0xdb, 0x6c, 0x3f, 0xc6, 0x9e,
-	0x38, 0x2b, 0x58, 0x79, 0x59, 0x5f, 0x57, 0xee, 0x77, 0xab, 0xe3, 0x9e, 0x72, 0xe1, 0x04, 0x0e,
-	0xd5, 0x1d, 0xa4, 0xee, 0x15, 0x37, 0x90, 0x85, 0x1c, 0x83, 0x57, 0x51, 0x1c, 0xee, 0xb0, 0x5e,
-	0x06, 0xfa, 0x3d, 0x85, 0x98, 0xe1, 0x1d, 0x64, 0x71, 0x11, 0x5c, 0x85, 0xea, 0xcf, 0x55, 0xd6,
-	0xbf, 0x5f, 0x8c, 0x98, 0xed, 0xe6, 0xfe, 0xc6, 0xf7, 0x5f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x8b,
-	0xef, 0x1a, 0x41, 0xf6, 0x01, 0x00, 0x00,
+	// 352 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x53, 0xdd, 0x4a, 0x33, 0x31,
+	0x10, 0x6d, 0xbe, 0x2c, 0xdd, 0xee, 0x7c, 0x4a, 0xcb, 0x5c, 0x48, 0x28, 0x08, 0x25, 0x88, 0x14,
+	0xc4, 0x8a, 0xed, 0x13, 0xa8, 0x78, 0xe1, 0x85, 0x50, 0xe2, 0x03, 0xd4, 0x6d, 0x37, 0x6b, 0x0b,
+	0xdd, 0x4d, 0x49, 0xe2, 0xa3, 0xf8, 0xbe, 0x92, 0x9f, 0x76, 0xbb, 0x82, 0x50, 0xbc, 0x9b, 0xb3,
+	0x39, 0x67, 0x72, 0xce, 0x4c, 0x16, 0xfa, 0x5a, 0x6d, 0xe5, 0x42, 0x2f, 0xf3, 0xd5, 0x64, 0xa7,
+	0x95, 0x55, 0x98, 0x58, 0x69, 0x2c, 0x2f, 0xa1, 0x3b, 0x97, 0xba, 0xda, 0x58, 0x44, 0x48, 0x84,
+	0xda, 0x4a, 0x46, 0x46, 0x64, 0x9c, 0x09, 0x5f, 0xe3, 0x05, 0x74, 0x5f, 0xa5, 0x5d, 0xab, 0x82,
+	0xfd, 0xf3, 0x5f, 0x23, 0x42, 0x06, 0xe9, 0x3c, 0xb7, 0x56, 0xea, 0x9a, 0x51, 0x7f, 0xb0, 0x87,
+	0x5e, 0xa1, 0x8a, 0xcf, 0xad, 0x64, 0x49, 0x54, 0x78, 0xc4, 0x67, 0x90, 0x85, 0x7b, 0x84, 0xdc,
+	0xe1, 0x35, 0xa4, 0x01, 0x18, 0x46, 0x46, 0x74, 0xfc, 0x7f, 0x7a, 0x36, 0x71, 0x66, 0x26, 0x91,
+	0xb1, 0x3f, 0xe4, 0xf7, 0x8d, 0xc8, 0x38, 0x7f, 0x2b, 0x55, 0x04, 0x7f, 0x54, 0xf8, 0x1a, 0x07,
+	0x40, 0x2b, 0xf3, 0x11, 0xcd, 0xb9, 0x92, 0x5f, 0x42, 0xea, 0x9c, 0xbb, 0x5b, 0x10, 0x12, 0x1d,
+	0x02, 0x51, 0x17, 0xc8, 0xd5, 0x5c, 0x00, 0x3c, 0xd7, 0xa5, 0xd2, 0xab, 0xdf, 0x18, 0x2e, 0x40,
+	0xd5, 0x8a, 0x5c, 0x1d, 0x22, 0xef, 0xda, 0x91, 0x23, 0xe4, 0x6b, 0xe8, 0x89, 0xc7, 0x87, 0xa7,
+	0x97, 0xba, 0x54, 0x47, 0x1d, 0xc9, 0xdf, 0x3b, 0x7a, 0x45, 0x6b, 0x88, 0x01, 0xf1, 0xe9, 0x91,
+	0xfb, 0x53, 0x07, 0x72, 0x05, 0x10, 0x56, 0xe0, 0xfd, 0x35, 0x9d, 0x49, 0xab, 0xf3, 0x3b, 0x64,
+	0x81, 0x75, 0x72, 0x63, 0xbc, 0x85, 0xac, 0xc8, 0x6d, 0xbe, 0xd8, 0xd4, 0xa5, 0x62, 0xd4, 0xaf,
+	0x71, 0x10, 0xd6, 0xd8, 0xdc, 0x27, 0x7a, 0x8e, 0xe2, 0xaa, 0xe9, 0x17, 0x81, 0xc4, 0x8d, 0x09,
+	0x6f, 0x20, 0x0d, 0x04, 0x83, 0xe7, 0x81, 0x1f, 0x17, 0x36, 0xec, 0x1f, 0xcb, 0x85, 0x34, 0xbc,
+	0x83, 0x77, 0x90, 0xbd, 0x49, 0x1b, 0x5f, 0x68, 0xbf, 0xf5, 0x4a, 0x1a, 0xc1, 0xe1, 0x8d, 0x78,
+	0x41, 0x1a, 0x47, 0x84, 0xd1, 0x4d, 0xb3, 0xef, 0xe1, 0xcf, 0x2f, 0x86, 0x77, 0x96, 0x5d, 0xff,
+	0x37, 0xcc, 0xbe, 0x03, 0x00, 0x00, 0xff, 0xff, 0x07, 0xa1, 0x56, 0x85, 0x20, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -325,6 +522,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type RBACClient interface {
 	Modules(ctx context.Context, in *RoleRep, opts ...grpc.CallOption) (*ModuleRes, error)
+	SetPermit(ctx context.Context, in *PermitRep, opts ...grpc.CallOption) (*PermitRes, error)
 	Enforce(ctx context.Context, in *EnforceRep, opts ...grpc.CallOption) (*EnforceRes, error)
 }
 
@@ -345,6 +543,15 @@ func (c *rBACClient) Modules(ctx context.Context, in *RoleRep, opts ...grpc.Call
 	return out, nil
 }
 
+func (c *rBACClient) SetPermit(ctx context.Context, in *PermitRep, opts ...grpc.CallOption) (*PermitRes, error) {
+	out := new(PermitRes)
+	err := c.cc.Invoke(ctx, "/test.RBAC/SetPermit", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rBACClient) Enforce(ctx context.Context, in *EnforceRep, opts ...grpc.CallOption) (*EnforceRes, error) {
 	out := new(EnforceRes)
 	err := c.cc.Invoke(ctx, "/test.RBAC/Enforce", in, out, opts...)
@@ -357,6 +564,7 @@ func (c *rBACClient) Enforce(ctx context.Context, in *EnforceRep, opts ...grpc.C
 // RBACServer is the server API for RBAC service.
 type RBACServer interface {
 	Modules(context.Context, *RoleRep) (*ModuleRes, error)
+	SetPermit(context.Context, *PermitRep) (*PermitRes, error)
 	Enforce(context.Context, *EnforceRep) (*EnforceRes, error)
 }
 
@@ -378,6 +586,24 @@ func _RBAC_Modules_Handler(srv interface{}, ctx context.Context, dec func(interf
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RBACServer).Modules(ctx, req.(*RoleRep))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RBAC_SetPermit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PermitRep)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RBACServer).SetPermit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/test.RBAC/SetPermit",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RBACServer).SetPermit(ctx, req.(*PermitRep))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -407,6 +633,10 @@ var _RBAC_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Modules",
 			Handler:    _RBAC_Modules_Handler,
+		},
+		{
+			MethodName: "SetPermit",
+			Handler:    _RBAC_SetPermit_Handler,
 		},
 		{
 			MethodName: "Enforce",

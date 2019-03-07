@@ -3,8 +3,26 @@ package test;
 
 service RBAC {
     rpc Modules (RoleRep) returns (ModuleRes) {}
+    rpc SetPermit (PermitRep) returns (PermitRes) {}
     rpc Enforce (EnforceRep) returns (EnforceRes) {}
 }
+
+message Permit {
+    string Role  = 1;
+    string Method = 2;
+    string Pattern = 3;
+    string Module  = 4;
+}
+
+message PermitRep {
+    repeated Permit Permits  = 1;
+}
+
+message PermitRes {
+    int64 code = 1;
+    string msg = 2;
+}
+
 message RoleRep  {
     repeated string role = 1;
 }
@@ -26,8 +44,12 @@ message EnforceRes {
     string msg = 2;
 }
 
+message ModuleInfo  {
+    string module = 1;
+}
+
 message ModuleRes {
     int64 code = 1;
     string msg = 2;
-    repeated RBACInfo data_info = 3;
+    repeated ModuleInfo data_info = 3;
 }
